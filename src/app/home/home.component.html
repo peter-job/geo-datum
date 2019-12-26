@@ -10,7 +10,7 @@ So you can still use template expressions, bindings, templates as well as all th
 The ActionBar is the NativeScript common abstraction over the Android ActionBar and iOS NavigationBar.
 http://docs.nativescript.org/ui/action-bar
 -->
-<ActionBar title="My App" class="action-bar">
+<ActionBar title="Geodatum" class="action-bar">
 </ActionBar>
 
 <!--
@@ -23,5 +23,36 @@ These components make use of several CSS class names that are part of the Native
 core theme, such as p-20, btn, h2, and list-group. You can view a full list of the
 class names available for styling your app at https://docs.nativescript.org/ui/theme.
 -->
-<GridLayout class="page">
+<GridLayout class="page" rows="*,*,*,*,*" [formGroup]="form">
+    <FlexboxLayout row="0">
+        <Label margin="10" width="100" text="Easting"></Label>
+        <TextField width="300" hint="Enter Easting" formControlName="easting" secure="false" keyboardType="number"
+            returnKeyType="done" autocorrect="false" maxLength="10">
+        </TextField>
+    </FlexboxLayout>
+
+    <FlexboxLayout row="1">
+        <Label margin="10" width="100" text="Northing"></Label>
+        <TextField width="300" hint="Enter Northing" formControlName="northing" secure="false" keyboardType="number"
+            returnKeyType="done" autocorrect="false" maxLength="10">
+        </TextField>
+    </FlexboxLayout>
+
+
+    <Button row="2" text="Convert" (tap)="convert()"></Button>
+
+    <FlexboxLayout row="3">
+        <Label margin="10" width="100" text="Longitude"></Label>
+        <TextField width="300" editable="false" formControlName="longitude" secure="false" keyboardType="number"
+            returnKeyType="done" autocorrect="false" maxLength="10">
+        </TextField>
+    </FlexboxLayout>
+
+    <FlexboxLayout row="4">
+        <Label margin="10" width="100" text="Latitude"></Label>
+        <TextField width="300" editable="false" formControlName="latitude" secure="false" keyboardType="number"
+            returnKeyType="done" autocorrect="false" maxLength="10">
+        </TextField>
+    </FlexboxLayout>
+    
 </GridLayout>
