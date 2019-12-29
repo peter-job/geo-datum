@@ -20,14 +20,15 @@
     "@angular/platform-browser": "~8.2.0",
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
+    "@types/proj4": "^2.5.0",
+    "geodist": "^0.2.1",
     "nativescript-angular": "~8.2.0",
     "nativescript-theme-core": "~1.0.6",
+    "proj4": "^2.5.0",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.4.0",
     "tns-core-modules": "~6.1.0",
-    "zone.js": "~0.9.1",
-    "geodist": "^0.2.1",
-    "proj4": "^2.5.0"
+    "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular/compiler-cli": "~8.2.0",

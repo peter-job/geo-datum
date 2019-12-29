@@ -1,14 +1,14 @@
 import { Injectable } from "@angular/core";
+import ProjectionTransformer from "./projection-transformer";
 
-@Injectable({	
-    providedIn: "root"	
+@Injectable({
+    providedIn: "root"
 })
 export class ProjectionService {
-    public convert(coords: string[], conversion: Conversion): string[] {
-        return coords;
+    constructor(private readonly transformer: ProjectionTransformer) {
     }
-}
 
-export enum Conversion {
-    "utm_wgs84" = "UTM to WGS84"
+    public convert(coords: number[], from: string, to: string): string[] {
+        return this.transformer.transform(from, to, coords);
+    }
 }

@@ -8,7 +8,6 @@ import { HomeComponent } from "./home/home.component";
 import { ReactiveFormsModule } from '@angular/forms';
 import { NativeScriptFormsModule } from 'nativescript-angular/forms'
 
-
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
@@ -17,17 +16,17 @@ import { NativeScriptFormsModule } from 'nativescript-angular/forms'
 
 @NgModule({
     bootstrap: [
-        AppComponent
+        AppComponent,
     ],
     imports: [
         NativeScriptModule,
         AppRoutingModule,
         ReactiveFormsModule,
-        NativeScriptFormsModule
+        NativeScriptFormsModule,
     ],
     declarations: [
         AppComponent,
-        HomeComponent
+        HomeComponent,
     ],
     providers: [],
     schemas: [

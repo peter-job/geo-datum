@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ProjectionService, Conversion } from "../services/projection-service";
+import { ProjectionService } from "../services/projection-service";
 
 @Component({
     selector: "app-home",
@@ -22,17 +22,16 @@ export class HomeComponent implements OnInit {
             latitude: ["", Validators.nullValidator]
         })
 
-        this.form.controls.easting.setValue("420400")
-        this.form.controls.northing.setValue("849900")
+        this.form.controls.easting.setValue(151.0)
+        this.form.controls.northing.setValue(-33.0)
     }
 
     public convert() {
         console.log("converting...")
         const coords = [this.form.controls.easting.value, this.form.controls.northing.value];
-        const conversion = Conversion.utm_wgs84
-        const results = this.service.convert(coords, conversion);
+        const results = this.service.convert(coords, "AGD66", "WGS84");
         console.log(results);
-        this.form.controls.latitude.setValue("lat")
-        this.form.controls.longitude.setValue("long")
+        this.form.controls.latitude.setValue(results[0])
+        this.form.controls.longitude.setValue(results[1])
     }
 }
