@@ -9,6 +9,7 @@ import { ProjectionService } from "../services/projection-service";
 export class HomeComponent implements OnInit {
     public easting: string;
     public form: FormGroup;
+    public projections = ["AGD66 TO WGS84", "OTHER"]
 
     constructor(
         private readonly service: ProjectionService,
@@ -29,7 +30,7 @@ export class HomeComponent implements OnInit {
     public convert() {
         console.log("converting...")
         const coords = [this.form.controls.easting.value, this.form.controls.northing.value];
-        const results = this.service.convert(coords, "AGD66", "WGS84");
+        const results = this.service.convert("AGD66", "WGS84", coords);
         console.log(results);
         this.form.controls.latitude.setValue(results[0])
         this.form.controls.longitude.setValue(results[1])

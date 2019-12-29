@@ -8,7 +8,7 @@ export class ProjectionService {
     constructor(private readonly transformer: ProjectionTransformer) {
     }
 
-    public convert(coords: number[], from: string, to: string): string[] {
+    public convert(from: string, to: string, coords: number[]): string[] {
         return this.transformer.transform(from, to, coords);
     }
 }

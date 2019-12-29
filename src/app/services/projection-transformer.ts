@@ -1,7 +1,7 @@
 import driftRateParameters from "../models/drift-rate-parameters";
 import projParameters from "../models/proj-parameters";
 import { Injectable } from "@angular/core";
-const { default: proj4 } = require("proj4");
+import proj4 from "proj4";
 
 @Injectable({
     providedIn: "root"
@@ -16,7 +16,6 @@ export default class ProjectionTransformer {
     }
 
     private addProjDefs() {
-        console.log(Object.keys(proj4));
         proj4.defs(
             "AGD66",
             `+proj=longlat +ellps=aust_SA +towgs84=${this.addDrift(
