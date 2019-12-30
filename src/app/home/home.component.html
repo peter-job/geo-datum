@@ -25,7 +25,10 @@ class names available for styling your app at https://docs.nativescript.org/ui/t
 -->
 <GridLayout class="page" rows="*,*,*,*,*,*" [formGroup]="form">
     <FlexboxLayout row="0">
-        <ListPicker width="100" [items]="projections" selectedIndex="0"></ListPicker>
+        <Label margin="10" width="100" text="From"></Label>
+        <TextField width="300" hint="Select projection" formControlName="from" secure="false"
+            returnKeyType="done" autocorrect="false" maxLength="20" (tap)="openProjectionPicker()">
+        </TextField>
     </FlexboxLayout>
     <FlexboxLayout row="1">
         <Label margin="10" width="100" text="Easting"></Label>

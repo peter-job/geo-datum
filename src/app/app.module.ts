@@ -7,6 +7,8 @@ import { HomeComponent } from "./home/home.component";
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { NativeScriptFormsModule } from 'nativescript-angular/forms'
+import { ProjectionPickerComponent } from "./projection-picker/projection-picker.component";
+import { DataStorage } from "./providers/data-storage";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -27,8 +29,11 @@ import { NativeScriptFormsModule } from 'nativescript-angular/forms'
     declarations: [
         AppComponent,
         HomeComponent,
+        ProjectionPickerComponent
     ],
-    providers: [],
+    providers: [
+        DataStorage
+    ],
     schemas: [
         NO_ERRORS_SCHEMA
     ]

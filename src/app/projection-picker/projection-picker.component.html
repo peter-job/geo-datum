@@ -1,0 +1,10 @@
+<ActionBar title="Projections" class="action-bar">
+    <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" (tap)="back()"></NavigationButton>
+</ActionBar>
+
+<GridLayout [formGroup]="form">
+    <Label text="Select a projection"></Label>
+    <ListPicker #picker formControlName="from" [items]="projections"
+    (tap)="projectionSelected(picker)">
+    </ListPicker>
+</GridLayout>
