@@ -7,7 +7,7 @@ import { ProjectionPickerComponent } from "./projection-picker/projection-picker
 
 const routes: Routes = [
     { path: "", component: HomeComponent },
-    { path: "projection/from", component: ProjectionPickerComponent}
+    { path: "projection/:directive", component: ProjectionPickerComponent}
 ];
 
 @NgModule({

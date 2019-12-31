@@ -3,8 +3,8 @@
 </ActionBar>
 
 <GridLayout [formGroup]="form">
-    <Label text="Select a projection"></Label>
-    <ListPicker #picker formControlName="from" [items]="projections"
-    (tap)="projectionSelected(picker)">
+    <Label text="Select a projection" margin="30" textAlignment="center"></Label>
+    <ListPicker #picker formControlName="projection" [items]="projections"
+    selectedIndex="1" (tap)="projectionSelected(picker)" height="300">
     </ListPicker>
 </GridLayout>

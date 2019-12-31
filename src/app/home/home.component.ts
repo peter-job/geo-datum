@@ -23,33 +23,35 @@ export class HomeComponent implements OnInit {
         console.log("TEXT");
 
         this.form = this.formBuilder.group({
-            from: ["", Validators.nullValidator],
-            easting: ["", Validators.nullValidator],
-            northing: ["", Validators.nullValidator],
-            longitude: ["", Validators.nullValidator],
-            latitude: ["", Validators.nullValidator]
+            from_datum: ["", Validators.nullValidator],
+            from_x: ["", Validators.nullValidator],
+            from_y: ["", Validators.nullValidator],
+            to_datum: ["", Validators.nullValidator],
+            to_x: ["", Validators.nullValidator],
+            to_y: ["", Validators.nullValidator],
         })
         console.log("logging dataStorage")
         console.log(this.dataStorage)
 
-        if (this.dataStorage.storage) {
-            this.form.patchValue(this.dataStorage.storage)
+        if (this.dataStorage.storage.form) {
+            this.form.patchValue(this.dataStorage.storage.form)
         }
 
-        this.form.controls.easting.setValue(151.0)
-        this.form.controls.northing.setValue(-33.0)
+        this.form.controls.from_x.setValue(151.0)
+        this.form.controls.from_y.setValue(-33.0)
     }
 
     public convert() {
         console.log("converting...")
-        const coords = [this.form.controls.easting.value, this.form.controls.northing.value];
+        const coords = [this.form.controls.from_x.value, this.form.controls.from_y.value];
         const results = this.service.convert("AGD66", "WGS84", coords);
         console.log(results);
-        this.form.controls.latitude.setValue(results[0])
-        this.form.controls.longitude.setValue(results[1])
+        this.form.controls.to_x.setValue(results[0])
+        this.form.controls.to_y.setValue(results[1])
     }
 
-    public openProjectionPicker() {
-        this.router.navigate(["projection/from"])
+    public openProjectionPicker(directive: string) {
+        this.dataStorage.storage.form = this.form.value;
+        this.router.navigate([`projection/${directive}`])
     }
 }

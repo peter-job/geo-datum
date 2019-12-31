@@ -23,23 +23,24 @@ These components make use of several CSS class names that are part of the Native
 core theme, such as p-20, btn, h2, and list-group. You can view a full list of the
 class names available for styling your app at https://docs.nativescript.org/ui/theme.
 -->
-<GridLayout class="page" rows="*,*,*,*,*,*" [formGroup]="form">
+<GridLayout class="page" rows="*,*,*,*,*,*,*" [formGroup]="form">
     <FlexboxLayout row="0">
         <Label margin="10" width="100" text="From"></Label>
-        <TextField width="300" hint="Select projection" formControlName="from" secure="false"
-            returnKeyType="done" autocorrect="false" maxLength="20" (tap)="openProjectionPicker()">
+        <TextField width="300" hint="Select projection" formControlName="from_datum" secure="false"
+            returnKeyType="done" editable="false" autocorrect="false" maxLength="20" (tap)="openProjectionPicker('from')">
         </TextField>
+        <Button width="100" text="Units" class="-outline -rounded-sm"></Button>
     </FlexboxLayout>
     <FlexboxLayout row="1">
         <Label margin="10" width="100" text="Easting"></Label>
-        <TextField width="300" hint="Enter Easting" formControlName="easting" secure="false" keyboardType="number"
+        <TextField width="300" hint="Enter Easting" formControlName="from_x" secure="false" keyboardType="number"
             returnKeyType="done" autocorrect="false" maxLength="10">
         </TextField>
     </FlexboxLayout>
 
     <FlexboxLayout row="2">
         <Label margin="10" width="100" text="Northing"></Label>
-        <TextField width="300" hint="Enter Northing" formControlName="northing" secure="false" keyboardType="number"
+        <TextField width="300" hint="Enter Northing" formControlName="from_y" secure="false" keyboardType="number"
             returnKeyType="done" autocorrect="false" maxLength="10">
         </TextField>
     </FlexboxLayout>
@@ -48,15 +49,22 @@ class names available for styling your app at https://docs.nativescript.org/ui/t
     <Button row="3" text="Convert" (tap)="convert()"></Button>
 
     <FlexboxLayout row="4">
-        <Label margin="10" width="100" text="Longitude"></Label>
-        <TextField width="300" editable="false" formControlName="longitude" secure="false" keyboardType="number"
-            returnKeyType="done" autocorrect="false" maxLength="10">
+        <Label margin="10" width="100" text="To"></Label>
+        <TextField width="300" hint="Select projection" formControlName="to_datum" secure="false"
+            returnKeyType="done" autocorrect="false" maxLength="20" editable="false" (tap)="openProjectionPicker('to')">
         </TextField>
     </FlexboxLayout>
 
     <FlexboxLayout row="5">
+        <Label margin="10" width="100" text="Longitude"></Label>
+        <TextField width="300" editable="false" formControlName="to_x" secure="false" keyboardType="number"
+            returnKeyType="done" autocorrect="false" maxLength="10">
+        </TextField>
+    </FlexboxLayout>
+
+    <FlexboxLayout row="6">
         <Label margin="10" width="100" text="Latitude"></Label>
-        <TextField width="300" editable="false" formControlName="latitude" secure="false" keyboardType="number"
+        <TextField width="300" editable="false" formControlName="to_y" secure="false" keyboardType="number"
             returnKeyType="done" autocorrect="false" maxLength="10">
         </TextField>
     </FlexboxLayout>

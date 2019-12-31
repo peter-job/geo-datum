@@ -5,6 +5,8 @@ export class DataStorage {
 
     public storage: any;
 
-    public constructor() { }
+    public constructor() { 
+        this.storage = {}
+    }
 
 }
