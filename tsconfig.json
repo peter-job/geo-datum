@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "target": "es5",
+        "target": "ESNext",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "noEmitHelpers": true,
@@ -12,7 +12,8 @@
         "lib": [
             "es6",
             "dom",
-            "es2015.iterable"
+            "es2015.iterable",
+            "es2017.object"
         ],
         "baseUrl": ".",
         "paths": {
