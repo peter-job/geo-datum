@@ -3,12 +3,13 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { HomeComponent } from "./home/home.component";
+import { HomeComponent } from "./components/home/home.component";
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { NativeScriptFormsModule } from 'nativescript-angular/forms'
-import { ProjectionPickerComponent } from "./projection-picker/projection-picker.component";
+import { ProjectionPickerComponent } from "./components/projection-picker/projection-picker.component";
 import { DataStorage } from "./providers/data-storage";
+import { UnitPickerComponent } from "./components/unit-picker/unit-picker.component";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -29,7 +30,8 @@ import { DataStorage } from "./providers/data-storage";
     declarations: [
         AppComponent,
         HomeComponent,
-        ProjectionPickerComponent
+        ProjectionPickerComponent,
+        UnitPickerComponent
     ],
     providers: [
         DataStorage

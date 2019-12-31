@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ProjectionService } from "../services/projection-service";
+import { ProjectionService } from "../../services/projection-service";
 import { Router } from "@angular/router";
-import { DataStorage } from "../providers/data-storage";
+import { DataStorage } from "../../providers/data-storage";
+import UnitConfigs from "../../models/unit-configs";
 
 @Component({
     selector: "app-home",
@@ -11,6 +12,7 @@ import { DataStorage } from "../providers/data-storage";
 export class HomeComponent implements OnInit {
     public easting: string;
     public form: FormGroup;
+    public config: any;
     public projections = ["AGD66 TO WGS84", "OTHER"]
 
     constructor(
@@ -37,6 +39,17 @@ export class HomeComponent implements OnInit {
             this.form.patchValue(this.dataStorage.storage.form)
         }
 
+        if (!this.dataStorage.storage.config) {
+            this.config = {
+                to_unit: UnitConfigs.lat_long_degrees,
+                from_unit: UnitConfigs.lat_long_degrees
+            };
+        }
+
+        else {
+            this.config = this.dataStorage.storage.config;
+        }
+
         this.form.controls.from_x.setValue(151.0)
         this.form.controls.from_y.setValue(-33.0)
     }
@@ -51,7 +64,17 @@ export class HomeComponent implements OnInit {
     }
 
     public openProjectionPicker(directive: string) {
-        this.dataStorage.storage.form = this.form.value;
+        this.saveFormToStorage();
         this.router.navigate([`projection/${directive}`])
+    }
+
+    public openUnitPicker(directive: string) {
+        this.saveFormToStorage();
+        this.router.navigate([`unit/${directive}`])
+    }
+
+    private saveFormToStorage() {
+        this.dataStorage.storage.config = this.config;
+        this.dataStorage.storage.form = this.form.value;
     }
 }

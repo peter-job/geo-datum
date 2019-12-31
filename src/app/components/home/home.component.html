@@ -29,17 +29,17 @@ class names available for styling your app at https://docs.nativescript.org/ui/t
         <TextField width="300" hint="Select projection" formControlName="from_datum" secure="false"
             returnKeyType="done" editable="false" autocorrect="false" maxLength="20" (tap)="openProjectionPicker('from')">
         </TextField>
-        <Button width="100" text="Units" class="-outline -rounded-sm"></Button>
+        <Button width="100" text="Units" class="-outline -rounded-sm" (tap)="openUnitPicker('from')"></Button>
     </FlexboxLayout>
     <FlexboxLayout row="1">
-        <Label margin="10" width="100" text="Easting"></Label>
+        <Label margin="10" width="100" [text]="config.from_unit.x_name"></Label>
         <TextField width="300" hint="Enter Easting" formControlName="from_x" secure="false" keyboardType="number"
             returnKeyType="done" autocorrect="false" maxLength="10">
         </TextField>
     </FlexboxLayout>
 
     <FlexboxLayout row="2">
-        <Label margin="10" width="100" text="Northing"></Label>
+        <Label margin="10" width="100" [text]="config.from_unit.y_name"></Label>
         <TextField width="300" hint="Enter Northing" formControlName="from_y" secure="false" keyboardType="number"
             returnKeyType="done" autocorrect="false" maxLength="10">
         </TextField>
@@ -53,17 +53,18 @@ class names available for styling your app at https://docs.nativescript.org/ui/t
         <TextField width="300" hint="Select projection" formControlName="to_datum" secure="false"
             returnKeyType="done" autocorrect="false" maxLength="20" editable="false" (tap)="openProjectionPicker('to')">
         </TextField>
+        <Button width="100" text="Units" class="-outline -rounded-sm" (tap)="openUnitPicker('to')"></Button>
     </FlexboxLayout>
 
     <FlexboxLayout row="5">
-        <Label margin="10" width="100" text="Longitude"></Label>
+        <Label margin="10" width="100" [text]="config.to_unit.x_name"></Label>
         <TextField width="300" editable="false" formControlName="to_x" secure="false" keyboardType="number"
             returnKeyType="done" autocorrect="false" maxLength="10">
         </TextField>
     </FlexboxLayout>
 
     <FlexboxLayout row="6">
-        <Label margin="10" width="100" text="Latitude"></Label>
+        <Label margin="10" width="100" [text]="config.to_unit.y_name"></Label>
         <TextField width="300" editable="false" formControlName="to_y" secure="false" keyboardType="number"
             returnKeyType="done" autocorrect="false" maxLength="10">
         </TextField>

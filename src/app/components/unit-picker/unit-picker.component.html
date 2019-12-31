@@ -1,0 +1,10 @@
+<ActionBar title="Units" class="action-bar">
+    <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" (tap)="back()"></NavigationButton>
+</ActionBar>
+
+<GridLayout [formGroup]="form">
+    <Label text="Select a unit system" margin="30" textAlignment="center"></Label>
+    <ListPicker #picker formControlName="unit" [items]="configs"
+    selectedIndex="0" textField="name" (tap)="unitSelected(picker)" height="300">
+    </ListPicker>
+</GridLayout>

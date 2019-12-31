@@ -1,17 +1,17 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ProjectionService } from "../services/projection-service";
 import { Router, ActivatedRoute } from "@angular/router";
-import { DataStorage } from "../providers/data-storage";
+import { DataStorage } from "../../providers/data-storage";
+import UnitConfigs from "../../models/unit-configs";
 
 @Component({
-    selector: "app-projection-picker",
-    templateUrl: "./projection-picker.component.html"
+    selector: "app-unit-picker",
+    templateUrl: "./unit-picker.component.html"
 })
-export class ProjectionPickerComponent implements OnInit {
+export class UnitPickerComponent implements OnInit {
     public form: FormGroup;
     public directive: string;
-    public projections = ["AGD66", "GDA94", "ANG", "WGS84"]
+    public configs: any[];
 
     constructor(
         private readonly formBuilder: FormBuilder,
@@ -23,15 +23,16 @@ export class ProjectionPickerComponent implements OnInit {
 
     ngOnInit(): void {
         this.form = this.formBuilder.group({
-            projection: [0, Validators.nullValidator],
+            unit: [0, Validators.nullValidator],
         })
-
         this.form.valueChanges.subscribe(() => console.log(this.form.value))
+
+        this.configs = Object.values(UnitConfigs);
     }
 
-    public projectionSelected() {
-        console.log("projection selected")
-        this.dataStorage.storage.form[`${this.directive}_datum`] = this.projections[this.form.value.projection];
+    public unitSelected() {
+        console.log("unit selected")
+        this.dataStorage.storage.config[`${this.directive}_unit`] = this.configs[this.form.value.unit];
         console.log(this.dataStorage)
         this.router.navigate(["/"])
 
