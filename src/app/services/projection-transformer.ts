@@ -32,9 +32,8 @@ export default class ProjectionTransformer {
 
         proj4.defs(
             "ANG",
-            `+proj=tmerc +x_0=4915813.467 +y_0=400000 +ellps=clrk58 +towgs84=${this.addDrift(
-                projParameters.ANG
-            )} +no_defs +units=yards`
+            `+proj=longlat +a=6378339.78 +rf=294.26 +towgs84=${this.addDrift(
+                projParameters.ANG)} +no_defs`
         );
     }
 
