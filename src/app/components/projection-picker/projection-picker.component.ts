@@ -11,7 +11,7 @@ import { DataStorage } from "../../providers/data-storage";
 export class ProjectionPickerComponent implements OnInit {
     public form: FormGroup;
     public directive: string;
-    public projections = ["AGD66", "GDA94", "ANG", "WGS84"]
+    public projections = ["AGD66", "GDA94", "ANG", "WGS84", "GDA2020"]
 
     constructor(
         private readonly formBuilder: FormBuilder,

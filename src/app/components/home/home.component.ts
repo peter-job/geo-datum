@@ -13,7 +13,6 @@ export class HomeComponent implements OnInit {
     public easting: string;
     public form: FormGroup;
     public config: any;
-    public projections = ["AGD66 TO WGS84", "OTHER"]
 
     constructor(
         private readonly service: ProjectionService,

@@ -19,21 +19,28 @@ export default class ProjectionTransformer {
         proj4.defs(
             "AGD66",
             `+proj=longlat +ellps=aust_SA +towgs84=${this.addDrift(
-                projParameters.AGD66
+                projParameters.AGD66, 2000
             )} +no_defs +datum=none`
         );
 
         proj4.defs(
             "GDA94",
             `+proj=longlat +ellps=GRS80 +towgs84=${this.addDrift(
-                projParameters.GDA94
+                projParameters.GDA94, 2000
             )} +no_defs +datum=none`
         );
 
         proj4.defs(
             "ANG",
             `+proj=longlat +a=6378339.78 +rf=294.26 +towgs84=${this.addDrift(
-                projParameters.ANG)} +no_defs`
+                projParameters.ANG, 1950)} +no_defs`
+        );
+
+        proj4.defs(
+            "GDA2020",
+            `+proj=longlat +ellps=GRS80 +towgs84=${this.addDrift(
+                projParameters.GDA2020, 2020
+            )} +no_defs +datum=none`
         );
     }
 
@@ -43,10 +50,9 @@ export default class ProjectionTransformer {
         return Math.round(100 * (date.getFullYear() + date.getDay() / 365)) / 100;
     }
 
-    private addDrift(params) {
+    private addDrift(params, fromEpoch) {
         return driftRateParameters.DRIFT_RATE
-            .map((d, i) => (d * (this.epoch - 2000) + params[i]).toFixed(3))
+            .map((d, i) => (d * (this.epoch - fromEpoch) + params[i]).toFixed(3))
             .toString();
     }
-
 }
