@@ -42,6 +42,12 @@ export default class ProjectionTransformer {
                 projParameters.GDA2020, 2020
             )} +no_defs +datum=none`
         );
+
+        proj4.defs("EPSG:28356",
+            "+proj=utm +zone=56 +south +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
+        )
+
+        proj4.defs("ANG CART", "+proj=tmerc +lat_0=34s +lon_0=151e +k_0=1 +a=6378339.78 +rf=294.26 +to_meter=0.91439841 +x_0=365759.36 +y_0=731518.73")
     }
 
     private get epoch(): number {

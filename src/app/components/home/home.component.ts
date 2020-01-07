@@ -55,9 +55,10 @@ export class HomeComponent implements OnInit {
 
     public convert() {
         console.log("converting...")
-        const coords = [this.form.value.from_x, this.form.value.from_y];
+        const coords = [+this.form.value.from_x, +this.form.value.from_y];
         const from_datum = this.form.value.from_datum;
         const to_datum = this.form.value.to_datum;
+        console.log(this.form.value);
         const results = this.service.convert(from_datum, to_datum, coords);
         console.log(results);
         this.form.controls.to_x.setValue(results[0])
