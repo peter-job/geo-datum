@@ -12,6 +12,9 @@ export default class ProjectionTransformer {
     }
 
     public transform(from: string, to: string, coords: number[]) {
+        let point = proj4.Point(coords[0], coords[1]);
+        let source = proj4.Proj(from);
+        let dest = proj4.Proj(to);
         return proj4(from, to, coords);
     }
 
@@ -47,7 +50,9 @@ export default class ProjectionTransformer {
             "+proj=utm +zone=56 +south +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
         )
 
-        proj4.defs("ANG CART", "+proj=tmerc +lat_0=34s +lon_0=151e +k_0=1 +a=6378339.78 +rf=294.26 +to_meter=0.91439841 +x_0=365759.36 +y_0=731518.73")
+        proj4.defs("ANG_CART", 
+            "+proj=tmerc +lat_0=-34 +lon_0=151 +a=6378339.78 +rf=294.26 +to_meter=0.91439841 +x_0=365759.36 +y_0=731518.73"
+        )
     }
 
     private get epoch(): number {
